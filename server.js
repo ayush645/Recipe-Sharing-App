@@ -43,6 +43,12 @@ app.use(logger("dev"));
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+router.get("/" , (req , res)=>{
+return res.json({message:'welcome'})
+})
+
+
 router.get("/getRecipes", (req, res) => {
   Recipe.find((err, recipes) => {
     if (err) return res.json({ success: false, error: err });
