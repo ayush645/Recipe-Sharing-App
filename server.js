@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 router.get("/" , (req , res)=>{
-return res.json({message:'welcome'})
+return res.json({message:'Welcome to Recipe Sharing website'})
 })
 
 
