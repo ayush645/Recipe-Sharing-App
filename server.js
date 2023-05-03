@@ -11,16 +11,10 @@ const router = express.Router();
 const User = mongoose.model('User');
 const Recipe = mongoose.model('Recipe');
 const MONGODB_URL = "mongodb://localhost:27017/recipe";
-// I KNOW THIS CREDENTIAL SHOULD NOT BE HERE. IT IS ALSO SAVED IN .ENV. SINCE OUR REPO IS PRIVATE, I WILL JUST USE IT HERE.
 
-// enable sessions
+
 const session = require('express-session');
-// const sessionOptions = {
-//     secret: 'secret cookie thang (store this elsewhere!)',
-//     resave: true,
-//       saveUninitialized: true
-// };
-// app.use(session(sessionOptions));
+
 const mongoURL = "mongodb://localhost:27017/recipe";
 mongoose.connect(
   mongoURL,
@@ -32,15 +26,10 @@ let db = mongoose.connection;
 db.once("open", () => console.log("connected to the database"));
 db.on("error", console.error.bind(console, "MongoDB connection failed:"));
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'hbs');
-//
-// body parser setup
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
-// serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -124,8 +113,6 @@ router.delete("/deleteRecipe", (req, res) => {
   });
 });
 
-// this is our create ㅇhttps://damp-lake-70786.herokuapp.com/
-// this method adds new data in our database
 router.post("/postRecipe", (req, res) => {
   let recipe = new Recipe();
 
