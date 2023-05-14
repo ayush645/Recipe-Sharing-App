@@ -113,22 +113,22 @@ router.delete("/deleteRecipe", (req, res) => {
   });
 });
 
-// router.post("/postRecipe", (req, res) => {
-//   let recipe = new Recipe();
+router.post("/postRecipe", (req, res) => {
+  let recipe = new Recipe();
 
-//   const { userId, name, description, picture_url } = req.body;
+  const { userId, name, description, picture_url } = req.body;
 
-//   if ((!id && id !== 0) || !message) {
-//     return res.json({
-//       success: false,
-//       error: "INVALID INPUTS"
-//     });
-//   }
-//   recipe.save(err => {
-//     if (err) return res.json({ success: false, error: err });
-//     return res.json({ success: true });
-//   });
-// });
+  if ((!id && id !== 0) || !message) {
+    return res.json({
+      success: false,
+      error: "INVALID INPUTS"
+    });
+  }
+  recipe.save(err => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true });
+  });
+});
 
 
 
